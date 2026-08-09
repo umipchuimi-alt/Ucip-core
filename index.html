@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>UCIP CORE</title>
+
+<link rel="stylesheet" href="style.css">
+
+<!-- Iconos -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+<!-- Fuente -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
+
+</head>
+
+
+<body>
+
+
+<div class="background"></div>
+
+
+<main id="home-screen" class="app screen active">
+
+
+<!-- CABECERA HOSPITAL -->
+
+<header class="hospital-header">
+
+
+<div class="hospital-logo">
+
+<i class="fa-solid fa-hospital"></i>
+
+</div>
+
+
+<div>
+
+<h3>
+Hospital Universitario
+<br>
+Materno Infantil de Canarias
+</h3>
+
+<p>
+Unidad de Cuidados Intensivos Pediátricos
+</p>
+
+</div>
+
+
+</header>
+
+
+
+
+<!-- LOGO PRINCIPAL -->
+
+
+<section class="main-logo">
+
+
+<div class="ecg-circle">
+
+<i class="fa-solid fa-heart-pulse"></i>
+
+</div>
+
+
+<h1>
+UCIP CORE
+</h1>
+
+
+<h2>
+Simulación clínica interactiva
+</h2>
+
+
+<p>
+Recuperación de sistemas críticos pediátricos
+</p>
+
+
+</section>
+
+
+
+
+
+<!-- TARJETA INICIO -->
+
+
+<section class="start-card">
+
+
+<div class="info-icon">
+
+<i class="fa-solid fa-shield-heart"></i>
+
+</div>
+
+
+<h2>
+Sistema de entrenamiento clínico
+</h2>
+
+
+<p>
+
+Simulación basada en escenarios reales
+para la recuperación de equipos críticos
+en una Unidad de Cuidados Intensivos Pediátricos.
+
+</p>
+
+
+
+<button id="start-btn">
+
+<i class="fa-solid fa-play"></i>
+
+INICIAR SIMULACIÓN
+
+</button>
+
+
+</section>
+
+
+
+
+
+<footer>
+
+
+CHUIMI · UCIP · 2026
+
+</footer>
+</main>
+<section id="briefing-screen" class="screen">
+
+    <div class="briefing-card">
+
+        <div class="briefing-icon">
+            🩺
+        </div>
+
+        <h1>UCIP CORE</h1>
+
+        <h2>SIMULACIÓN CLÍNICA</h2>
+
+        <div class="briefing-text">
+
+            <p>
+                Bienvenido a la Unidad de Cuidados Intensivos Pediátricos.
+            </p>
+
+            <p>
+                A partir de este momento asumirás la asistencia de un paciente crítico utilizando el entorno de simulación UCIP CORE.
+            </p>
+
+            <p>
+                Durante la actividad deberás interpretar la información clínica, consultar la documentación de la unidad y utilizar correctamente los recursos disponibles para mantener la estabilidad del paciente.
+            </p>
+
+            <p>
+                Todo el material necesario se encuentra distribuido entre los equipos, protocolos y recursos habituales de la unidad.
+            </p>
+
+        </div>
+
+        <div class="briefing-objetivos">
+
+            <h3>OBJETIVOS</h3>
+
+            <ul>
+
+                <li>✔ Valorar el estado inicial del paciente.</li>
+
+                <li>✔ Analizar la información disponible.</li>
+
+                <li>✔ Resolver las incidencias utilizando los recursos de la unidad.</li>
+
+                <li>✔ Mantener la estabilidad clínica durante toda la simulación.</li>
+
+            </ul>
+
+        </div>
+
+<div class="briefing-team">
+
+    <h3>👥 REGISTRO DEL EQUIPO</h3>
+
+    <p>
+
+        Indica el número de participantes y registra a cada miembro del equipo.
+
+    </p>
+
+    <label>Número de participantes</label>
+
+    <input
+        id="numParticipantes"
+        type="number"
+        min="1"
+        max="10"
+        placeholder="Ej: 4">
+
+    <div id="listaParticipantes"></div>
+
+</div>
+
+<button id="btnBriefing">
+
+    ACCEDER AL BOX
+
+</button>
+
+    </div>
+
+</section>
+<!-- =================================================
+     MONITOR CLÍNICO BOX-09
+================================================= -->
+
+<section id="monitor-screen" class="monitor-screen screen">
+
+
+    <!-- CABECERA MONITOR -->
+
+    <header class="monitor-top">
+
+        <div class="monitor-brand">
+
+            <strong>
+                UCIP CORE
+            </strong>
+
+            <span>
+                BOX-09
+            </span>
+
+        </div>
+
+
+        <div class="patient-info">
+
+            <span>
+                PACIENTE: MATEO G.
+            </span>
+
+            <span>
+                6 AÑOS · 22 KG
+            </span>
+
+        </div>
+
+
+        <div class="monitor-time">
+
+            <span>
+                08:45
+            </span>
+
+            <span>
+                NORMAL
+            </span>
+
+        </div>
+
+
+    </header>
+
+
+
+    <!-- CUERPO PRINCIPAL -->
+
+    <div class="monitor-body">
+
+
+
+        <!-- ZONA ONDAS -->
+
+        <section class="wave-area">
+
+
+            <!-- ECG -->
+
+            <div class="signal-row">
+
+                <div class="signal-label green">
+
+                    ECG
+
+                </div>
+
+
+<div class="ecg-line">
+
+    <canvas id="ecgCanvas"></canvas>
+
+</div>
+</div>
+
+
+            <!-- SATURACION -->
+
+            <div class="signal-row">
+
+                <div class="signal-label blue">
+
+                    SpO₂
+
+                </div>
+
+
+             <div class="spo-line">
+
+    <canvas id="spoCanvas"></canvas>
+
+</div>
+
+
+            </div>
+
+
+
+
+            <!-- TENSION -->
+
+            <div class="signal-row">
+
+                <div class="signal-label red">
+
+                    ART
+
+                </div>
+
+
+             <div class="art-line">
+
+    <canvas id="artCanvas"></canvas>
+
+</div>
+
+            </div>
+<!-- RESPIRACIÓN -->
+
+<div class="signal-row">
+
+    <div class="signal-label yellow">
+
+        RESP
+
+    </div>
+
+    <div class="resp-line">
+
+        <canvas id="respCanvas"></canvas>
+
+    </div>
+
+</div>
+
+
+
+        </section>
+
+
+
+
+
+        <!-- VALORES NUMÉRICOS -->
+
+        <section class="values-panel">
+
+
+
+            <div class="value-card heart">
+
+                <small>
+                    FC
+                </small>
+
+                <strong>
+                    92
+                </strong>
+
+                <span>
+                    lpm
+                </span>
+
+            </div>
+
+
+
+            <div class="value-card oxygen">
+
+                <small>
+                    SpO₂
+                </small>
+
+                <strong>
+                    98
+                </strong>
+
+                <span>
+                    %
+                </span>
+
+            </div>
+
+
+
+
+         <div class="value-card pressure">
+
+    <small>
+        TA
+    </small>
+
+    <strong class="ta-value">
+        100/58
+    </strong>
+
+    <span>
+        mmHg
+    </span>
+
+</div>
+
+
+
+
+            <div class="value-card respiration">
+
+                <small>
+                    FR
+                </small>
+
+                <strong>
+                    21
+                </strong>
+
+                <span>
+                    rpm
+                </span>
+
+            </div>
+
+
+
+        </section>
+
+
+
+    </div>
+
+
+
+
+
+    <!-- ESTADO DE EQUIPOS -->
+
+    <footer class="device-panel">
+
+
+        <div class="device ok">
+
+            <span>
+                🫁
+            </span>
+
+            <strong>
+                Respirador
+            </strong>
+
+            <small>
+                OPERATIVO
+            </small>
+
+        </div>
+
+
+
+        <div class="device ok">
+
+            <span>
+                💉
+            </span>
+
+            <strong>
+                Bombas
+            </strong>
+
+            <small>
+                OPERATIVO
+            </small>
+
+        </div>
+
+
+
+        <div class="device ok">
+
+            <span>
+                📈
+            </span>
+
+            <strong>
+                Monitor
+            </strong>
+
+            <small>
+                OPERATIVO
+            </small>
+
+        </div>
+
+
+
+        <div class="device ok">
+
+            <span>
+                💻
+            </span>
+
+            <strong>
+                BedSide
+            </strong>
+
+            <small>
+                OPERATIVO
+            </small>
+
+        </div>
+
+
+    </footer>
+
+
+
+
+    <!-- BOTÓN -->
+
+    <button class="continue-monitor">
+
+        CONTINUAR
+
+    </button>
+
+
+
+</section>
+
+<div id="dos-screen">
+    <pre id="dos-text"></pre>
+    <div id="dos-actions">
+
+    <button id="continue-dos">
+        CONTINUE
+    </button>
+
+</div>
+</div>
+<div id="recovery-screen">
+
+    <div class="recovery-panel">
+
+        <h1>UCIP CORE</h1>
+        <h2>MODO DE RECUPERACIÓN DEL SISTEMA</h2>
+
+        <div id="recovery-content">
+
+        </div>
+
+        <button id="start-recovery">
+            INICIAR RECUPERACIÓN
+        </button>
+
+    </div>
+
+</div>
+
+
+<div id="black-screen"></div>
+
+<div id="transicion-pista" class="transicion-pista">
+
+    <div class="transicion-box">
+
+        <div class="transicion-icon">
+            ✔
+        </div>
+
+        <h2>VALIDACIÓN CORRECTA</h2>
+
+        <p>Registro aceptado</p>
+
+        <p>Cargando siguiente prueba...</p>
+
+        <div class="transicion-loader">
+
+            <div class="transicion-bar"></div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--====================================
+ ARCHIVO DE AYUDA BEDSIDE
+=====================================-->
+
+<div id="archivo-bedside" class="archivo-modal">
+
+    <div class="archivo-window">
+
+        <div class="archivo-header">
+
+            📁 SYSTEM FILE
+
+            <button id="cerrarArchivo">
+
+                ✕
+
+            </button>
+
+        </div>
+
+        <pre class="archivo-texto">
+
+SYSTEM FILE
+
+ARCHIVE_INDEX.DAT
+
+Estado:
+██ Recuperado parcialmente
+
+--------------------------------------------
+
+Los documentos físicos utilizan un sistema
+de indexación jerárquica.
+
+Cada referencia está formada por tres índices.
+
+Los índices deben utilizarse en el orden
+correcto.
+
+Nunca es posible acceder al índice inferior
+sin haber localizado previamente el superior.
+
+Jerarquía de navegación
+
+"□"
+│
+▼
+"─"
+│
+▼
+"●"
+
+Descripción del sistema:
+
+□  Contiene varias ─
+
+─  Contiene varios ●
+
+●  Representa una única posición dentro de ─
+
+La última posición identifica un único
+carácter dentro del documento.
+
+NOTA:
+La interpretación exacta de cada nivel fue
+eliminada durante el incidente.
+
+Fin del archivo.
+
+        </pre>
+
+    </div>
+
+</div>
+
+<!--====================================
+ RESTORATION ENGINE
+=====================================-->
+
+<div id="restoreModal" class="restore-modal">
+
+    <div class="restore-window">
+
+        <div class="restore-title">
+
+            UCIP CORE RESTORATION ENGINE
+
+        </div>
+
+        <div class="restore-subtitle">
+
+            Initializing recovery process...
+
+        </div>
+
+        <pre
+        
+            id="restoreConsole"
+            class="restore-console"></pre>
+
+           <div id="restoreButtons" class="restore-buttons">
+
+    <button
+        id="btnInforme"
+        class="matrix-btn">
+
+        📄 DESCARGAR INFORME DE MISIÓN
+
+    </button>
+
+</div>
+
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script src="app.js"></script>
+
+
+</body>
+
+</html>

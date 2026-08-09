@@ -1,0 +1,2964 @@
+/*==================================================
+=            UCIP CORE - BLOQUE 1
+=            RESET + PORTADA + PANTALLAS
+==================================================*/
+
+/* ---------- RESET ---------- */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    font-family:'Inter',sans-serif;
+
+    background:#06131f;
+
+    color:#fff;
+
+}
+
+/* ---------- FONDO ---------- */
+
+body{
+    position:relative;
+}
+
+.background{
+    position:fixed;
+    inset:0;
+
+    background:
+    radial-gradient(circle at top,#0c4c7f 0%,#08263d 35%,#03101c 100%);
+
+    z-index:-2;
+}
+
+.background::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background-image:
+
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+
+    background-size:40px 40px;
+
+    opacity:.25;
+
+}
+
+/* ---------- SISTEMA DE PANTALLAS ---------- */
+
+.screen{
+
+    display:none;
+
+}
+
+.screen.active{
+
+    display:flex;
+
+}
+
+/* ---------- PORTADA ---------- */
+
+.app{
+
+    width:100%;
+    min-height:100vh;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:flex-start;
+
+    align-items:center;
+
+    gap:40px;
+
+    padding:40px 40px 80px;
+
+    overflow-y:auto;
+
+    box-sizing:border-box;
+
+}
+
+/* ---------- CABECERA ---------- */
+
+.hospital-header{
+
+    display:flex;
+    align-items:center;
+
+    gap:20px;
+margin-top:30px;
+}
+
+.hospital-logo{
+
+    width:70px;
+    height:70px;
+
+    border-radius:50%;
+
+    background:#0e75b5;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:28px;
+
+    box-shadow:0 0 25px rgba(0,160,255,.4);
+
+}
+
+.hospital-header h3{
+
+    font-size:22px;
+    font-weight:700;
+
+    line-height:1.2;
+
+}
+
+.hospital-header p{
+
+    margin-top:6px;
+
+    color:#b7d8ef;
+
+    font-size:15px;
+
+}
+
+/* ---------- LOGO ---------- */
+
+.main-logo{
+
+    text-align:center;
+
+}
+
+.ecg-circle{
+
+    width:150px;
+    height:150px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    background:linear-gradient(135deg,#00b5ff,#0066d6);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:60px;
+
+    box-shadow:
+
+    0 0 40px rgba(0,180,255,.45);
+
+}
+
+.main-logo h1{
+
+    margin-top:25px;
+
+    font-size:70px;
+
+    letter-spacing:6px;
+
+    font-weight:800;
+
+}
+
+.main-logo h2{
+
+    margin-top:10px;
+
+    font-size:30px;
+
+    font-weight:400;
+
+    color:#9ed4ff;
+
+}
+
+.main-logo p{
+
+    margin-top:20px;
+
+    font-size:18px;
+
+    color:#d3e8f7;
+
+}
+
+/* ---------- TARJETA ---------- */
+
+.start-card{
+
+    width:650px;
+    max-width:95%;
+
+    padding:40px;
+
+    border-radius:18px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    backdrop-filter:blur(12px);
+
+    text-align:center;
+
+}
+
+.info-icon{
+
+    font-size:50px;
+
+    color:#54d5ff;
+
+}
+
+.start-card h2{
+
+    margin-top:18px;
+
+    font-size:30px;
+
+}
+
+.start-card p{
+
+    margin-top:20px;
+
+    line-height:1.8;
+
+    color:#d6e7f3;
+
+    font-size:17px;
+
+}
+
+/* ---------- BOTÓN ---------- */
+
+#start-btn{
+
+    margin-top:35px;
+
+    padding:18px 45px;
+
+    border:none;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    background:#00a3ff;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:700;
+
+    transition:.25s;
+
+}
+
+#start-btn:hover{
+
+    transform:translateY(-3px);
+
+    background:#0cc0ff;
+
+    box-shadow:0 10px 30px rgba(0,180,255,.45);
+
+}
+
+#start-btn i{
+
+    margin-right:10px;
+
+}
+
+/* ---------- FOOTER ---------- */
+
+footer{
+
+    font-size:14px;
+
+    color:#8fb7d4;
+
+    letter-spacing:2px;
+
+}
+/*==================================================
+            BRIEFING
+==================================================*/
+
+#briefing-screen{
+
+    display:none;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:100vh;
+
+    padding:40px;
+
+}
+
+.briefing-card{
+
+    width:900px;
+
+    max-width:95%;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:18px;
+
+    backdrop-filter:blur(12px);
+
+    padding:45px;
+
+}
+
+.briefing-icon{
+
+    font-size:60px;
+
+    text-align:center;
+
+}
+
+.briefing-card h1{
+
+    margin-top:20px;
+
+    text-align:center;
+
+    font-size:42px;
+
+}
+
+.briefing-card h2{
+
+    margin-top:10px;
+
+    text-align:center;
+
+    color:#7ed6ff;
+
+    font-weight:400;
+
+}
+
+.briefing-text{
+
+    margin-top:35px;
+
+    line-height:1.8;
+
+    font-size:18px;
+
+}
+
+.briefing-text p{
+
+    margin-bottom:18px;
+
+}
+
+.briefing-objetivos{
+
+    margin-top:25px;
+
+    background:rgba(255,255,255,.04);
+
+    border-left:4px solid #42cfff;
+
+    padding:20px;
+
+}
+
+.briefing-objetivos h3{
+
+    margin-bottom:15px;
+
+}
+
+.briefing-objetivos ul{
+
+    list-style:none;
+
+}
+
+.briefing-objetivos li{
+
+    margin:12px 0;
+
+}
+.briefing-team{
+
+    margin-top:30px;
+
+    padding:20px;
+
+    background:rgba(255,255,255,.04);
+
+    border-left:4px solid #38c7ff;
+
+}
+
+.briefing-team h3{
+
+    margin-bottom:12px;
+
+}
+
+.briefing-team p{
+
+    margin-bottom:18px;
+
+    color:#d8ebf7;
+
+}
+
+#numParticipantes{
+
+    width:140px;
+
+    padding:12px;
+
+    border-radius:8px;
+
+    border:1px solid rgba(255,255,255,.25);
+
+    background:#102536;
+
+    color:white;
+
+    font-size:18px;
+
+    text-align:center;
+
+}
+#listaParticipantes{
+
+    margin-top:20px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.participante-input{
+
+    padding:12px;
+
+    border-radius:8px;
+
+    border:1px solid rgba(255,255,255,.18);
+
+    background:#10293d;
+
+    color:white;
+
+    font-size:16px;
+
+}
+
+.participante-input::placeholder{
+
+    color:#8fb7d4;
+
+}
+
+#btnBriefing{
+
+    display:block;
+
+    margin:40px auto 0;
+
+    padding:18px 45px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#0099ff;
+
+    color:white;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+#btnBriefing:hover{
+
+    background:#12b1ff;
+
+}
+/*==================================================
+=            UCIP CORE - BLOQUE 2
+=            MONITOR CLÍNICO
+==================================================*/
+
+.monitor-screen{
+
+    width:100%;
+    height:100vh;
+
+    display:none;
+    flex-direction:column;
+
+    background:#000;
+
+    color:#fff;
+
+    overflow:hidden;
+
+}
+
+/*--------------- CABECERA ----------------*/
+
+.monitor-top{
+
+    height:70px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:15px 30px;
+
+    border-bottom:2px solid #202020;
+
+    background:#050505;
+
+}
+
+.monitor-brand{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.monitor-brand strong{
+
+    color:#00e5ff;
+
+    font-size:24px;
+
+}
+
+.monitor-brand span{
+
+    color:white;
+
+    font-size:14px;
+
+}
+
+.patient-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:center;
+
+    gap:5px;
+
+    font-size:16px;
+
+}
+
+.monitor-time{
+
+    display:flex;
+
+    flex-direction:column;
+
+    align-items:flex-end;
+
+    gap:5px;
+
+}
+
+.monitor-time span:first-child{
+
+    font-size:28px;
+
+    font-weight:bold;
+
+}
+
+.monitor-time span:last-child{
+
+    color:#3cff5a;
+
+}
+
+/*--------------- CUERPO ----------------*/
+
+.monitor-body{
+
+    flex:1;
+
+    display:grid;
+
+    grid-template-columns:75% 25%;
+
+}
+
+/*--------------- ONDAS ----------------*/
+
+.wave-area{
+
+    padding:25px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-around;
+
+}
+
+.signal-row{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+}
+
+.signal-label{
+
+    width:90px;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+}
+
+.green{
+
+    color:#00ff44;
+
+}
+
+.blue{
+
+    color:#2da8ff;
+
+}
+
+.red{
+
+    color:#ff3b3b;
+
+}
+
+.ecg-line,
+.spo-line,
+.ta-line{
+
+    flex:1;
+
+    height:90px;
+
+    border:2px solid #161616;
+
+    background:#020202;
+
+    display:flex;
+
+    align-items:center;
+
+    padding-left:20px;
+
+    font-size:42px;
+
+    letter-spacing:4px;
+
+    overflow:hidden;
+
+}
+
+.ecg-line{
+
+    color:#00ff44;
+
+}
+
+.spo-line{
+
+    color:#3aa8ff;
+
+}
+
+.ta-line{
+
+    color:#ff4444;
+
+}
+
+/*--------------- PANEL DERECHO ----------------*/
+
+.values-panel{
+
+    background:#050505;
+
+    border-left:2px solid #222;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.value-card{
+
+    flex:1;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-bottom:2px solid #181818;
+
+}
+
+.value-card small{
+
+    font-size:20px;
+
+    margin-bottom:8px;
+
+}
+
+.value-card strong{
+
+    font-size:clamp(40px,5vw,72px);
+
+    font-weight:700;
+
+    line-height:1;
+
+    white-space:nowrap;
+
+    max-width:100%;
+
+    overflow:hidden;
+
+}
+
+.value-card span{
+
+    margin-top:10px;
+
+    font-size:18px;
+
+}
+.ta-value{
+
+    font-size:clamp(32px,4vw,58px) !important;
+
+    white-space:nowrap;
+
+    line-height:1;
+
+}
+.heart{
+
+    color:#00ff44;
+
+}
+
+.oxygen{
+
+    color:#3aa8ff;
+
+}
+
+.pressure{
+
+    color:#ff4444;
+
+}
+
+.respiration{
+
+    color:#ffe600;
+
+}
+
+/*--------------- DISPOSITIVOS ----------------*/
+
+.device-panel{
+
+    height:120px;
+
+    background:#0a0a0a;
+
+    border-top:2px solid #202020;
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+}
+
+.device{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:8px;
+
+    border-right:1px solid #202020;
+
+}
+
+.device:last-child{
+
+    border-right:none;
+
+}
+
+.device span{
+
+    font-size:36px;
+
+}
+
+.device strong{
+
+    font-size:18px;
+
+}
+
+.device small{
+
+    color:#00ff66;
+
+    font-weight:600;
+
+}
+
+/*--------------- BOTÓN ----------------*/
+
+.continue-monitor{
+
+    position:absolute;
+
+    right:30px;
+    bottom:30px;
+
+    min-width:180px;
+    height:55px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:0 30px;
+
+    border:none;
+    border-radius:10px;
+
+    background:#0078ff;
+
+    color:#fff;
+
+    font-size:18px;
+    font-weight:700;
+    letter-spacing:1px;
+
+    cursor:pointer;
+
+    transition:background .25s ease,
+               transform .25s ease,
+               box-shadow .25s ease;
+
+    z-index:100;
+
+    box-shadow:0 4px 12px rgba(0,120,255,.35);
+
+}
+
+.continue-monitor:hover{
+
+    background:#1492ff;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 6px 18px rgba(0,120,255,.45);
+
+}
+
+.continue-monitor:active{
+
+    transform:translateY(0);
+
+    box-shadow:0 2px 8px rgba(0,120,255,.35);
+
+}
+.monitor-screen{
+
+    padding-bottom:100px;
+
+}
+/* ===========================
+   PANTALLA NEGRA
+=========================== */
+
+#black-screen{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:#000;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .25s;
+    z-index:99999;
+}
+/*==================================================
+=            UCIP CORE - BLOQUE 3
+=            ANIMACIONES
+==================================================*/
+
+/* Movimiento continuo */
+
+.ecg-line{
+
+    flex:1;
+    height:90px;
+
+    background:#020202;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+#ecgCanvas{
+
+    width:100%;
+    height:100%;
+    display:block;
+
+}
+.spo-line{
+
+    flex:1;
+
+    height:90px;
+
+    background:#020202;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+#spoCanvas{
+
+    width:100%;
+    height:100%;
+
+    display:block;
+
+}
+.art-line{
+
+    flex:1;
+
+    height:90px;
+
+    background:#020202;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+#artCanvas{
+
+    width:100%;
+    height:100%;
+
+    display:block;
+
+}
+.resp-line{
+
+    flex:1;
+
+    height:90px;
+
+    background:#020202;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+#respCanvas{
+
+    width:100%;
+    height:100%;
+
+    display:block;
+
+}
+
+
+
+/*==============================*/
+
+@keyframes ecgMove{
+
+    from{
+
+        transform:translateX(0);
+
+    }
+
+    to{
+
+        transform:translateX(-170%);
+
+    }
+
+}
+
+@keyframes spoMove{
+
+    from{
+
+        transform:translateX(0);
+
+    }
+
+    to{
+
+        transform:translateX(-170%);
+
+    }
+
+}
+
+@keyframes taMove{
+
+    from{
+
+        transform:translateX(0);
+
+    }
+
+    to{
+
+        transform:translateX(-170%);
+
+    }
+
+}
+
+
+/*==============================*/
+/* Brillo de números            */
+/*==============================*/
+
+.heart strong{
+
+    text-shadow:0 0 18px #00ff44;
+
+}
+
+.oxygen strong{
+
+    text-shadow:0 0 18px #3aa8ff;
+
+}
+
+.pressure strong{
+
+    text-shadow:0 0 18px #ff3030;
+
+}
+
+.respiration strong{
+
+    text-shadow:0 0 18px #ffe600;
+
+}
+
+
+/*==============================*/
+/* Equipos                      */
+/*==============================*/
+
+.device{
+
+    transition:.35s;
+
+}
+
+.device:hover{
+
+    background:#111;
+
+}
+
+
+/*==============================*/
+/* Estado operativo             */
+/*==============================*/
+
+.ok small{
+
+    animation:blinkGreen 1.4s infinite;
+
+}
+
+@keyframes blinkGreen{
+
+    0%{
+
+        opacity:1;
+
+    }
+
+    50%{
+
+        opacity:.25;
+
+    }
+
+    100%{
+
+        opacity:1;
+
+    }
+
+}
+
+
+/*==============================*/
+/* Hora                         */
+/*==============================*/
+
+.monitor-time span:first-child{
+
+    animation:clockGlow 2s infinite;
+
+}
+
+@keyframes clockGlow{
+
+    0%{
+
+        text-shadow:0 0 5px white;
+
+    }
+
+    50%{
+
+        text-shadow:0 0 18px white;
+
+    }
+
+    100%{
+
+        text-shadow:0 0 5px white;
+
+    }
+
+}
+#dos-screen{
+
+    position:fixed;
+    inset:0;
+
+    background:#000;
+    color:#00ff00;
+
+    display:none;
+
+    z-index:100000;
+
+    padding:30px;
+
+    font-family:"Courier New", monospace;
+
+    font-size:22px;
+
+    line-height:1.5;
+
+    overflow:auto;
+
+    box-sizing:border-box;
+
+}
+
+#dos-text{
+    white-space:pre-wrap;
+    margin:0;
+}
+#dos-actions{
+
+    display:none;
+
+    position:absolute;
+
+    left:50%;
+    bottom:40px;
+
+    transform:translateX(-50%);
+
+    width:90%;
+    max-width:340px;
+
+    text-align:center;
+
+}
+#continue-dos{
+
+    background:#000;
+    color:#00ff00;
+
+    border:2px solid #00ff00;
+
+    padding:14px 40px;
+
+    font-size:22px;
+
+    font-family:"Courier New", monospace;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+    width:80%;
+    max-width:320px;
+
+}
+
+#continue-dos:hover{
+
+    background:#00ff00;
+    color:#000;
+
+}
+
+@keyframes blink{
+
+    50%{
+        opacity:.25;
+    }
+
+}
+/* =====================================================
+   UCIP CORE - RECOVERY CONSOLE
+===================================================== */
+
+#recovery-screen{
+
+    position:fixed;
+    inset:0;
+
+    display:none;
+    justify-content:center;
+    align-items:center;
+
+    background:#070b11;
+
+    z-index:9999;
+
+    padding:12px;
+
+    font-family:'JetBrains Mono','Consolas','Courier New',monospace;
+
+}
+
+/* ==========================
+   PANEL
+========================== */
+
+.recovery-panel{
+    width:min(100%,900px);
+    height:min(90vh,720px);
+
+    background:#101722;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+}
+.ucip-panel{
+
+    padding:20px;
+    min-height:100%;
+}
+
+/* ==========================
+   CABECERA
+========================== */
+
+.recovery-panel h1{
+
+    margin:0;
+
+    padding:14px 20px;
+
+    background:#172231;
+
+    color:#ffffff;
+
+    font-size:19px;
+    font-weight:600;
+
+    letter-spacing:1px;
+
+    border-bottom:1px solid #233247;
+
+}
+
+.recovery-panel h2{
+
+    margin:0;
+
+    padding:8px 20px;
+
+    background:#111827;
+
+    color:#8ab4f8;
+
+    font-size:13px;
+    font-weight:500;
+
+    text-transform:uppercase;
+
+    letter-spacing:1.5px;
+
+    border-bottom:1px solid #233247;
+
+}
+
+/* ==========================
+   CONSOLA
+========================== */
+
+#recovery-content{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:18px 22px;
+
+    color:#e6edf3;
+
+    font-size:15px;
+
+    line-height:1.45;
+
+}
+
+/* ==========================
+   SCROLL
+========================== */
+
+#recovery-content::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+#recovery-content::-webkit-scrollbar-thumb{
+
+    background:#2e425b;
+
+    border-radius:8px;
+
+}
+
+/* ==========================
+   TÍTULOS
+========================== */
+
+.recovery-title{
+
+    color:#6fd3ff;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    margin-bottom:6px;
+
+}
+
+.recovery-subtitle{
+
+    color:#9bb8c9;
+
+    font-family:Consolas,monospace;
+
+    margin-bottom:10px;
+
+    font-size:14px;
+
+}
+
+/* ==========================
+   BARRA DE PROGRESO
+========================== */
+
+#progress-container{
+
+    width:100%;
+
+    height:16px;
+
+    background:#0f1620;
+
+    border:1px solid #35516a;
+
+    border-radius:4px;
+
+    overflow:hidden;
+
+    margin-bottom:4px;
+
+}
+
+#progress-bar{
+
+    position:relative;
+
+    width:0%;
+
+    height:100%;
+
+    overflow:hidden;
+
+    background:linear-gradient(90deg,#00bfff,#79e7ff);
+
+    transition:width .25s linear;
+
+}
+
+#progress-bar::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-40px;
+
+    width:40px;
+    height:100%;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(255,255,255,.9),
+        transparent
+    );
+
+    animation:scanBar 1.2s linear infinite;
+
+}
+
+@keyframes scanBar{
+
+    from{
+
+        left:-40px;
+
+    }
+
+    to{
+
+        left:100%;
+
+    }
+
+}
+
+#progress-percent{
+
+    text-align:right;
+
+    color:#7ce7ff;
+
+    font-size:13px;
+
+    font-family:Consolas,monospace;
+
+    margin-top:2px;
+
+    margin-bottom:10px;
+
+}
+
+/* ==========================
+   LOG
+========================== */
+
+#diagnostic-log{
+
+    font-family:Consolas,monospace;
+
+    color:#d5e4ef;
+
+    line-height:1.35;
+
+    min-height:260px;
+
+}
+
+.log-line{
+
+    margin:2px 0;
+
+    animation:fadeLine .25s ease;
+
+}
+
+@keyframes fadeLine{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(4px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* Estados */
+
+.fail{
+
+    color:#ff6464;
+
+    font-weight:bold;
+
+}
+
+.warn{
+
+    color:#ffd24d;
+
+    font-weight:bold;
+
+}
+
+.ready{
+
+    color:#4cff95;
+
+    font-weight:bold;
+
+}
+
+/* ==========================
+   BOTÓN
+========================== */
+
+#start-recovery{
+
+    display:none;
+
+    margin:12px auto 18px;
+
+    padding:13px 36px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#0ea5e9;
+
+    color:#ffffff;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    letter-spacing:1px;
+
+    cursor:pointer;
+
+    transition:all .25s ease;
+
+}
+
+#start-recovery:hover{
+
+    background:#38bdf8;
+
+    transform:translateY(-2px);
+
+    box-shadow:0 0 15px rgba(14,165,233,.45);
+
+}
+
+#start-recovery:active{
+
+    transform:scale(.98);
+
+}
+/*==========================================
+  CENTRO DE RECUPERACIÓN
+==========================================*/
+
+.ucip-sistemas{
+
+    margin-top:30px;
+
+}
+
+.respirador-card{
+
+    border:2px solid #ffd400;
+
+    border-radius:10px;
+
+    padding:20px;
+
+    margin:20px 0;
+
+    background:rgba(255,212,0,.05);
+
+    box-shadow:0 0 20px rgba(255,212,0,.20);
+
+}
+
+.resp-header{
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    letter-spacing:2px;
+
+    margin-bottom:15px;
+
+}
+
+.resp-status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    font-size:18px;
+
+    margin-bottom:20px;
+
+    color:#ffd400;
+
+    font-weight:bold;
+
+}
+
+.system-item{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:12px 18px;
+
+    margin:12px 0;
+
+    border:1px solid rgba(255,255,255,.15);
+
+    border-radius:8px;
+
+    background:rgba(255,255,255,.03);
+
+}
+.pulse-dot{
+
+    width:14px;
+
+    height:14px;
+
+    border-radius:50%;
+
+    background:#ffd400;
+
+    box-shadow:0 0 15px #ffd400;
+
+    animation:pulse 1.2s infinite;
+
+}
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+    50%{
+
+        transform:scale(1.35);
+
+        opacity:.35;
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+/*==========================================
+BARRA ESTADO PACIENTE
+==========================================*/
+
+.patient-status{
+
+    margin:25px 0;
+
+}
+
+.status-title{
+
+    font-size:15px;
+
+    letter-spacing:2px;
+
+    margin-bottom:10px;
+
+    color:#bbb;
+
+}
+
+.status-bar{
+
+    width:100%;
+
+    height:18px;
+
+    background:#1a1a1a;
+
+    border:1px solid #444;
+
+    border-radius:20px;
+
+    overflow:hidden;
+
+}
+
+.status-fill{
+
+    height:100%;
+
+    width:28%;
+
+    transition:.5s;
+
+}
+
+.status-fill.critical{
+
+    background:#ff2a2a;
+
+    box-shadow:0 0 15px #ff2a2a;
+
+}
+.status-fill.severe{
+
+    background:#ff9800;
+
+    box-shadow:0 0 15px #ff9800;
+
+}
+
+.status-fill.stable{
+
+    background:#ffd54f;
+
+    box-shadow:0 0 15px #ffd54f;
+
+}
+
+.status-fill.safe{
+
+    background:#00e676;
+
+    box-shadow:0 0 18px #00e676;
+
+}
+
+.status-text{
+
+    margin-top:12px;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    color:#ffffff;
+
+}
+/*==========================================
+MONITOR DE CONSTANTES
+==========================================*/
+
+.monitor-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(140px,1fr));
+
+    gap:15px;
+
+    margin-top:20px;
+
+}
+
+.vital-card{
+
+    border-radius:10px;
+
+    padding:18px;
+
+    text-align:center;
+
+    border:2px solid;
+
+}
+
+.vital-title{
+
+    display:block;
+
+    font-size:15px;
+
+    letter-spacing:2px;
+
+    margin-bottom:10px;
+
+    opacity:.8;
+
+}
+
+.vital-card strong{
+
+    display:block;
+
+    font-size:34px;
+
+    margin-bottom:8px;
+
+}
+
+.vital-card small{
+
+    font-size:13px;
+
+}
+.rojo{
+
+    color:#ff4444;
+
+    border-color:#ff4444;
+
+    box-shadow:0 0 12px rgba(255,68,68,.35);
+
+}
+
+.amarillo{
+
+    color:#ffd400;
+
+    border-color:#ffd400;
+
+    box-shadow:0 0 12px rgba(255,212,0,.35);
+
+}
+
+.verde{
+
+    color:#00ff7f;
+
+    border-color:#00ff7f;
+
+    box-shadow:0 0 12px rgba(0,255,127,.35);
+
+}
+
+.gris{
+
+    color:#9c9c9c;
+
+    border-color:#555;
+
+}
+/* ==========================================
+   MATRIX TERMINAL
+========================================== */
+
+.matrix-screen{
+
+    background:#000;
+    color:#00ff66;
+    min-height:100%;
+
+    padding:40px;
+
+    font-family:"Courier New",monospace;
+
+}
+
+.matrix-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    border-bottom:1px solid #00ff66;
+
+    padding-bottom:15px;
+
+    margin-bottom:35px;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+}
+
+.matrix-text{
+
+    font-size:19px;
+
+    line-height:1.8;
+
+}
+
+.matrix-input{
+
+    width:80px;
+
+    height:80px;
+
+    margin-top:35px;
+
+    background:#000;
+
+    border:2px solid #00ff66;
+
+    color:#00ff66;
+
+    text-align:center;
+
+    font-size:48px;
+
+    text-transform:uppercase;
+
+    font-family:inherit;
+
+}
+
+.matrix-input:focus{
+
+    outline:none;
+
+    box-shadow:0 0 15px #00ff66;
+
+}
+
+.matrix-btn{
+
+    margin-top:30px;
+
+    padding:14px 45px;
+
+    background:#000;
+
+    color:#00ff66;
+
+    border:2px solid #00ff66;
+
+    cursor:pointer;
+
+    font-size:18px;
+
+    font-family:inherit;
+
+}
+
+.matrix-btn:hover{
+
+    background:#00ff66;
+
+    color:#000;
+
+}
+
+#mensajeError{
+
+    color:#ff4040;
+
+    margin-top:20px;
+
+    font-size:18px;
+
+}
+.green-dot{
+    background:#00ff7f;
+    box-shadow:0 0 15px #00ff7f;
+}
+.respirador-card.resp-ok{
+
+    border:2px solid #33ff66;
+
+    box-shadow:
+        0 0 20px rgba(51,255,102,.65),
+        inset 0 0 10px rgba(51,255,102,.25);
+
+    background:linear-gradient(
+        180deg,
+        rgba(0,60,20,.35),
+        rgba(0,30,10,.25)
+    );
+
+}
+/*==========================================
+ESTADOS TARJETAS
+==========================================*/
+
+.resp-ready{
+
+    border:2px solid #ffd400;
+
+    background:rgba(255,212,0,.05);
+
+    box-shadow:0 0 20px rgba(255,212,0,.20);
+
+}
+
+.resp-lock{
+
+    border:2px solid #d62828;
+
+    background:rgba(214,40,40,.08);
+
+    box-shadow:0 0 20px rgba(214,40,40,.25);
+
+}
+.red-dot{
+
+    background:#d62828;
+
+    box-shadow:0 0 12px #d62828;
+
+}
+.status-ok{
+
+    color:#33ff66;
+
+}
+
+.status-ready{
+
+    color:#ffd400;
+
+}
+
+.status-lock{
+
+    color:#ff4d4d;
+
+}
+/* ==========================================
+   MONITOR RECOVERY
+========================================== */
+
+.monitor-window{
+
+    max-width:950px;
+    margin:35px auto;
+    background:#f7f9fc;
+    border:2px solid #8cb8ff;
+    border-radius:14px;
+    overflow:hidden;
+    box-shadow:0 12px 35px rgba(0,0,0,.25);
+
+    font-family:Segoe UI,Arial,sans-serif;
+
+}
+
+.monitor-header{
+
+    background:#dcebff;
+    color:#244a8f;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 24px;
+
+    font-size:20px;
+    font-weight:700;
+
+    border-bottom:2px solid #8cb8ff;
+
+}
+
+.monitor-recovery-body{
+
+    display:flex;
+    flex-direction:column;
+    gap:18px;
+
+    padding:25px;
+
+}
+
+.monitor-box{
+
+    background:#eef1f5;
+
+    border:1px solid #d3d7dd;
+
+    border-left:6px solid #6da7ff;
+
+    border-radius:10px;
+
+    padding:20px;
+
+    margin-bottom:22px;
+
+}
+
+.monitor-box h3{
+
+    margin:0 0 12px;
+
+    color:#2f65c9;
+
+}
+
+.monitor-box p{
+
+    margin:8px 0;
+
+    color:#333;
+
+    line-height:1.6;
+
+}
+.monitor-row{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:18px;
+
+}
+
+.monitor-input{
+
+    width:100%;
+    max-width:320px;
+
+    padding:12px;
+
+    font-size:22px;
+
+    text-align:center;
+
+    border:2px solid #8cb8ff;
+
+    border-radius:8px;
+
+    background:white;
+
+    margin-top:18px;
+
+}
+
+.monitor-btn{
+
+    margin-top:25px;
+
+    padding:14px 30px;
+
+    border:none;
+
+    border-radius:8px;
+
+    background:#2f65c9;
+
+    color:white;
+
+    font-size:17px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.monitor-btn:hover{
+
+    background:#1f4ea7;
+
+}
+/*==================================================
+=            BOMBAS DE INFUSIÓN
+==================================================*/
+
+.braun-window{
+
+    width:1100px;
+    max-width:96%;
+
+    margin:auto;
+
+    background:#cfd4d8;
+
+    border:8px solid #7a7f85;
+
+    border-radius:18px;
+
+    box-shadow:0 20px 50px rgba(0,0,0,.45);
+
+    overflow:hidden;
+
+}
+
+.braun-header{
+
+    height:55px;
+
+    background:#6b7077;
+
+    color:white;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:0 20px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+
+}
+
+.braun-body{
+
+    padding:25px;
+
+    background:#d7dbdf;
+
+}
+
+.braun-display{
+
+    background:#dff8d0;
+
+    border:4px inset #7d8877;
+
+    border-radius:8px;
+
+    padding:22px;
+
+    font-family:"Courier New",monospace;
+
+    color:#123a10;
+
+    min-height:260px;
+
+    white-space:pre-line;
+
+}
+
+.braun-display h3{
+
+    margin-bottom:15px;
+
+    color:#103510;
+
+}
+
+.braun-formula{
+
+    margin-top:20px;
+
+    padding:14px 20px;
+
+    background:#3d4348;
+
+    color:#ffffff;
+
+    border-radius:4px;
+
+    font-family:"Courier New", monospace;
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    text-align:center;
+
+    border:2px solid #666;
+
+}
+
+.braun-validacion{
+
+    margin-top:25px;
+
+    display:flex;
+
+    gap:15px;
+
+    align-items:center;
+
+    justify-content:center;
+
+}
+
+.braun-input{
+
+    width:220px;
+
+    padding:12px;
+
+    font-size:20px;
+
+    text-align:center;
+
+    border:2px solid #666;
+
+    border-radius:6px;
+
+    background:white;
+
+}
+
+.braun-btn{
+
+    padding:12px 28px;
+
+    background:#4a90e2;
+
+    border:none;
+
+    color:white;
+
+    font-weight:bold;
+
+    border-radius:6px;
+
+    cursor:pointer;
+
+}
+
+.braun-btn:hover{
+
+    background:#337bd0;
+
+}
+
+.braun-keyboard{
+
+    margin-top:30px;
+
+    background:#aeb5bb;
+
+    padding:15px;
+
+    display:grid;
+
+    grid-template-columns:repeat(6,1fr);
+
+    gap:12px;
+
+}
+
+.braun-key{
+
+    background:#ececec;
+
+    border:2px solid #888;
+
+    border-radius:6px;
+
+    text-align:center;
+
+    padding:12px;
+
+    font-weight:bold;
+
+    color:#333;
+
+}
+.monitor-formula{
+
+    color:#1d3e78;
+
+}
+
+.monitor-formula strong{
+
+    color:#204d9b;
+
+}
+
+.formula-box{
+
+    background:#ffffff;
+
+    color:#234b8c;
+
+    border:2px solid #8cb8ff;
+
+    border-radius:8px;
+
+    padding:18px;
+
+    text-align:center;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+}
+/*==========================================
+TRANSICIÓN ENTRE PISTAS
+==========================================*/
+
+.transicion-pista{
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.55);
+
+    backdrop-filter:blur(4px);
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:99999;
+
+}
+
+.transicion-box{
+
+    width:420px;
+    max-width:90%;
+
+    padding:35px;
+
+    border-radius:18px;
+
+    background:#0f1f33;
+
+    border:2px solid #3ba4ff;
+
+    text-align:center;
+
+    animation:zoomIn .25s;
+
+    box-shadow:0 0 40px rgba(0,160,255,.35);
+
+}
+
+.transicion-icon{
+
+    font-size:58px;
+
+    color:#43d854;
+
+    margin-bottom:15px;
+
+}
+
+.transicion-box h2{
+
+    color:white;
+
+    margin-bottom:12px;
+
+}
+
+.transicion-box p{
+
+    color:#b8d8ff;
+
+    margin:8px 0;
+
+}
+
+.transicion-loader{
+
+    margin-top:22px;
+
+    width:100%;
+    height:8px;
+
+    background:#1f3552;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+}
+
+.transicion-bar{
+
+    width:0%;
+
+    height:100%;
+
+    background:#41d85b;
+
+    animation:cargar .7s linear forwards;
+
+}
+
+@keyframes cargar{
+
+    from{width:0%;}
+
+    to{width:100%;}
+
+}
+
+@keyframes zoomIn{
+
+    from{
+
+        transform:scale(.9);
+
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+/* ==========================================
+   BEDSIDE TERMINAL
+========================================== */
+
+.bedside-screen{
+
+    width:100%;
+
+    background:#030303;
+
+    border:2px solid #00ff7f;
+
+    border-radius:10px;
+
+    overflow:hidden;
+
+    box-shadow:0 0 25px rgba(0,255,120,.20);
+
+    font-family:Consolas, monospace;
+
+}
+
+.bedside-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:12px 20px;
+
+    background:#001a0d;
+
+    color:#7dffb2;
+
+    border-bottom:1px solid #00ff7f;
+
+    font-weight:bold;
+
+    letter-spacing:1px;
+
+}
+
+.bedside-body{
+
+    padding:22px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:18px;
+
+}
+
+.bedside-box{
+
+    background:#050505;
+
+    border:1px solid #00aa55;
+
+    padding:18px;
+
+    color:#7cff9d;
+
+    border-radius:6px;
+
+}
+
+.bedside-box h3{
+
+    margin-bottom:12px;
+
+    color:#00ff7f;
+
+    text-transform:uppercase;
+
+    font-size:16px;
+
+}
+/* ==========================================
+   ARCHIVO BEDSIDE
+========================================== */
+
+.archivo-modal{
+
+    position:fixed;
+    inset:0;
+
+    background:rgba(0,0,0,.75);
+
+    backdrop-filter:blur(3px);
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:999999;
+
+}
+
+.archivo-window{
+
+    width:760px;
+    max-width:92%;
+
+    max-height:85vh;
+
+    overflow:auto;
+
+    background:#050505;
+
+    border:2px solid #00ff66;
+
+    border-radius:8px;
+
+    box-shadow:0 0 25px rgba(0,255,120,.35);
+
+    font-family:Consolas, monospace;
+
+}
+
+.archivo-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:14px 20px;
+
+    background:#001d0d;
+
+    color:#7dffb2;
+
+    border-bottom:1px solid #00ff66;
+
+    font-weight:bold;
+
+    letter-spacing:1px;
+
+}
+
+.archivo-header button{
+
+    background:none;
+
+    border:none;
+
+    color:#7dffb2;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    transition:.2s;
+
+}
+
+.archivo-header button:hover{
+
+    color:white;
+
+}
+
+.archivo-texto{
+
+    margin:0;
+
+    padding:25px;
+
+    color:#7cff9d;
+
+    font-size:15px;
+
+    line-height:1.6;
+
+    white-space:pre-wrap;
+
+}
+.archivo-btn{
+
+    background:#002b16;
+
+    border:1px solid #00ff66;
+
+    color:#7dffb2;
+
+    padding:6px 12px;
+
+    border-radius:4px;
+
+    cursor:pointer;
+
+    font-family:Consolas, monospace;
+
+    font-size:13px;
+
+    transition:.2s;
+
+}
+
+.archivo-btn:hover{
+
+    background:#00ff66;
+
+    color:#000;
+
+}
+/*==========================================
+RESTORATION ENGINE
+==========================================*/
+
+/*==========================================
+RESTORATION MODAL
+==========================================*/
+
+.restore-modal{
+
+    display:none;
+
+    position:fixed;
+
+    inset:0;
+
+    background:rgba(0,0,0,.70);
+
+    backdrop-filter:blur(5px);
+
+    z-index:99999;
+
+    justify-content:center;
+
+    align-items:center;
+
+    animation:fadeRestore .35s;
+
+}
+
+@keyframes fadeRestore{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+.restore-window{
+
+    width:900px;
+
+    max-width:90%;
+
+    max-height:85vh;
+
+    overflow:auto;
+
+    border:2px solid #00ff66;
+
+    background:#050505;
+
+    box-shadow:
+        0 0 35px rgba(0,255,120,.35);
+
+    border-radius:12px;
+
+    padding:30px;
+
+    animation:popupRestore .35s;
+
+}
+
+@keyframes popupRestore{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.85);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+.restore-buttons{
+
+    display:none;
+
+    margin-top:25px;
+
+    text-align:center;
+
+}
