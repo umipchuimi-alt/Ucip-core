@@ -2962,3 +2962,300 @@ RESTORATION MODAL
     text-align:center;
 
 }
+/* ==========================================
+   GAME OVER · TIEMPO AGOTADO
+========================================== */
+
+#game-over-screen{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:999999;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:20px;
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(120,0,0,.25),
+            rgba(0,0,0,.96)
+        );
+
+    font-family:
+        "Courier New",
+        Consolas,
+        monospace;
+
+}
+
+.game-over-box{
+
+    width:700px;
+
+    max-width:95vw;
+
+    padding:35px;
+
+    text-align:center;
+
+    background:#080b0f;
+
+    border:2px solid #d62828;
+
+    border-radius:14px;
+
+    box-shadow:
+        0 0 35px rgba(214,40,40,.45),
+        inset 0 0 30px rgba(214,40,40,.08);
+
+}
+
+.game-over-alert{
+
+    font-size:55px;
+
+    color:#ff3333;
+
+    animation:
+        gameOverPulse 1s infinite;
+
+}
+
+.game-over-title{
+
+    margin-top:10px;
+
+    color:#ff3333;
+
+    font-size:32px;
+
+    font-weight:bold;
+
+    letter-spacing:3px;
+
+}
+
+.game-over-subtitle{
+
+    margin-top:8px;
+
+    color:#777;
+
+    font-size:13px;
+
+    letter-spacing:2px;
+
+}
+
+.game-over-divider{
+
+    height:1px;
+
+    background:#552020;
+
+    margin:25px 0;
+
+}
+
+.game-over-critical{
+
+    color:#ff4444;
+
+    font-size:19px;
+
+    font-weight:bold;
+
+}
+
+.game-over-message{
+
+    margin-top:22px;
+
+    color:#c8c8c8;
+
+    line-height:1.7;
+
+}
+
+.game-over-patient{
+
+    margin-top:22px;
+
+    padding:18px;
+
+    border:1px solid #7a2222;
+
+    background:rgba(214,40,40,.08);
+
+    color:#ff6666;
+
+    font-size:18px;
+
+}
+
+.game-over-stats{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:12px;
+
+    margin-top:25px;
+
+}
+
+.game-over-stats div{
+
+    padding:15px 8px;
+
+    background:#10151b;
+
+    border:1px solid #252c34;
+
+    border-radius:7px;
+
+}
+
+.game-over-stats span{
+
+    display:block;
+
+    color:#777;
+
+    font-size:10px;
+
+    margin-bottom:8px;
+
+}
+
+.game-over-stats strong{
+
+    color:#fff;
+
+    font-size:20px;
+
+}
+
+.game-over-btn{
+
+    margin-top:30px;
+
+    padding:15px 30px;
+
+    border:1px solid #ff4444;
+
+    border-radius:7px;
+
+    background:#120606;
+
+    color:#ff6666;
+
+    font-family:inherit;
+
+    font-size:16px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+}
+
+.game-over-btn:hover{
+
+    background:#d62828;
+
+    color:white;
+
+}
+
+@keyframes gameOverPulse{
+
+    0%,100%{
+        opacity:1;
+        transform:scale(1);
+    }
+
+    50%{
+        opacity:.45;
+        transform:scale(1.08);
+    }
+
+}
+/* ==========================================
+   GAME OVER · ADAPTACIÓN MÓVIL
+========================================== */
+
+@media (max-width:600px){
+
+    #game-over-screen{
+        padding:12px;
+        align-items:center;
+        overflow-y:auto;
+    }
+
+    .game-over-box{
+        width:100%;
+        max-width:100%;
+        padding:25px 18px;
+    }
+
+    .game-over-alert{
+        font-size:45px;
+    }
+
+    .game-over-title{
+        font-size:25px;
+        letter-spacing:2px;
+    }
+
+    .game-over-subtitle{
+        font-size:11px;
+    }
+
+    .game-over-critical{
+        font-size:16px;
+    }
+
+    .game-over-message{
+        font-size:14px;
+    }
+
+    .game-over-patient{
+        font-size:16px;
+        padding:15px;
+    }
+
+    .game-over-stats{
+        grid-template-columns:1fr;
+        gap:8px;
+    }
+
+    .game-over-stats div{
+        padding:12px;
+    }
+
+    .game-over-stats span{
+        font-size:9px;
+    }
+
+    .game-over-stats strong{
+        font-size:19px;
+    }
+
+    .game-over-btn{
+        width:100%;
+        padding:15px 12px;
+        font-size:14px;
+    }
+
+}

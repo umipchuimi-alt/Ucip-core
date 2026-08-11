@@ -74,7 +74,9 @@ disconnectSound.volume = 0.45;
 
 const simulacion = {
 
-    tiempoRestante: 45 * 60, // 45 minutos
+    tiempoRestante: 45 * 60,
+
+    tiempoAgotado: false, // 45 minutos
 
     tiempoEmpleado: 0,
 
@@ -170,16 +172,23 @@ function iniciarTemporizador(){
 
         actualizarTemporizador();
 
-        if(simulacion.tiempoRestante<=0){
+    if(simulacion.tiempoRestante <= 0){
 
-            clearInterval(intervaloTiempo);
+    clearInterval(intervaloTiempo);
 
-            intervaloTiempo = null;
+    intervaloTiempo = null;
 
-            // Aquí más adelante mostraremos
-            // GAME OVER
+    simulacion.tiempoRestante = 0;
 
-        }
+    // El tiempo máximo empleado son 45 minutos
+    simulacion.tiempoEmpleado = 45 * 60;
+
+    // Marcar que la misión terminó por tiempo
+    simulacion.tiempoAgotado = true;
+
+    mostrarFinTiempo();
+
+}
 
     },1000);
 
@@ -201,6 +210,122 @@ function actualizarTemporizador(){
         el.textContent = tiempo;
 
     });
+}
+function mostrarFinTiempo(){
+
+    // Registrar el tiempo máximo empleado
+    simulacion.tiempoEmpleado = 45 * 60;
+
+    // Detener cualquier sonido que pueda estar activo
+    if(typeof alarmSound !== "undefined"){
+        alarmSound.pause();
+        alarmSound.currentTime = 0;
+    }
+
+    // Crear pantalla final
+    const gameOver = document.createElement("div");
+
+    gameOver.id = "game-over-screen";
+
+    gameOver.innerHTML = `
+
+        <div class="game-over-box">
+
+            <div class="game-over-alert">
+                ⚠
+            </div>
+
+            <div class="game-over-title">
+                TIEMPO AGOTADO
+            </div>
+
+            <div class="game-over-subtitle">
+                UCIP CORE · EMERGENCY PROTOCOL
+            </div>
+
+            <div class="game-over-divider"></div>
+
+            <div class="game-over-critical">
+                🔴 ESTADO DEL PACIENTE: CRÍTICO
+            </div>
+
+            <div class="game-over-message">
+
+                La ventana de recuperación
+                ha finalizado.
+
+            </div>
+
+            <div class="game-over-patient">
+
+                <strong>PACIENTE NO RECUPERADO</strong>
+
+                <br><br>
+
+                FIN DE LA MISIÓN
+
+            </div>
+
+            <div class="game-over-stats">
+
+                <div>
+                    <span>MÓDULOS RECUPERADOS</span>
+                    <strong>${contarModulosRecuperados()}/4</strong>
+                </div>
+
+                <div>
+                    <span>TIEMPO EMPLEADO</span>
+                    <strong>45:00</strong>
+                </div>
+
+                <div>
+                    <span>ERRORES</span>
+                    <strong>${simulacion.errores}</strong>
+                </div>
+
+            </div>
+
+            <button
+                id="btnInformeGameOver"
+                class="game-over-btn">
+
+                📄 GENERAR INFORME DE MISIÓN
+
+            </button>
+
+        </div>
+
+    `;
+
+    document.body.appendChild(gameOver);
+
+    // Conectar botón con el mismo generador PDF
+    document
+        .getElementById("btnInformeGameOver")
+        .addEventListener(
+            "click",
+            generarInformePDF
+        );
+
+}
+function contarModulosRecuperados(){
+
+    let total = 0;
+
+    if(simulacion.sistemas.respirador.recuperado)
+        total++;
+
+    if(simulacion.sistemas.bedside.recuperado)
+        total++;
+
+    if(simulacion.sistemas.monitor.recuperado)
+        total++;
+
+    if(simulacion.sistemas.bombas.recuperado)
+        total++;
+
+    return total;
+
 }
 
 /* ==========================================
@@ -2929,12 +3054,13 @@ function mostrarRestorationEngine(){
 
     function bajarScroll(){
 
-        restoreConsole.scrollTo({
-            top: restoreConsole.scrollHeight,
-            behavior: "smooth"
-        });
+    requestAnimationFrame(()=>{
 
-    }
+        restoreConsole.scrollTop = restoreConsole.scrollHeight;
+
+    });
+
+}
 
     restoreConsole.textContent =
 `================================================
