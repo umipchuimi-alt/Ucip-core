@@ -2274,12 +2274,12 @@ simulacion.tiempos.respirador =
 
 const pruebasBedside = [
 
-  {
+{
     alerta:"CONEXIÓN PERDIDA.",
 
     mensaje:"La unidad continúa operativa, pero la memoria central del sistema BEDSIDE ha quedado inaccesible.\n\nLos protocolos no han desaparecido...\nHan sido trasladados al último nivel de seguridad.\n\nPROTOCOLO DE CONTINGENCIA ACTIVADO.",
 
-    pista:"Antes de que un procedimiento pediátrico comience, existe un lugar donde cada elemento debe estar ordenado, preparado y listo para su utilización.\n\nBusca en las carpetas de rescate el documento que describe cómo organizar la superficie de trabajo y disponer el material necesario antes de una intervención.\n\nUna vez localizado, utiliza la coordenada de recuperación:\n\n▣ 03\n━━━━ 11\n● 10\n\nRecupera el carácter oculto.",
+    pista:"Antes de que un procedimiento pediátrico comience, existe un lugar donde cada elemento debe estar ordenado, preparado y listo para su utilización.\n\nBusca en las carpetas de rescate el documento que describe cómo organizar la superficie de trabajo y disponer el material necesario antes de una intervención.\n\nUna vez localizado, utiliza la coordenada de recuperación:\n\n▣ 03\n━━━━ 11\n● 10\n\n⚠ ARCHIVE_INDEX.DAT\n\nEl archivo adjunto en la barra superior contiene la información necesaria para interpretar los símbolos de la coordenada.\n\nConsulta ARCHIVE_INDEX.DAT, identifica qué representa cada símbolo y aplica la equivalencia a los valores indicados.\n\nRecupera el carácter oculto.",
 
     respuesta:"A"
 },
@@ -2546,7 +2546,7 @@ const pruebasMonitor = [
 
     mensaje:"El sistema ha perdido tres constantes esenciales del protocolo de prevención de infecciones respiratorias.\n\nLa integridad del algoritmo no puede verificarse hasta reconstruir los parámetros originales.\n\nSolo se conserva la función que desempeñaba cada uno de ellos.",
 
-    pista:"Recupera los siguientes parámetros del protocolo:\n\nα → Valor que mantiene aislada la vía aérea inferior.\n\nβ → Parámetro que determina cuándo un circuito deja de ser considerado seguro.\n\nγ → Concentración del agente utilizado para preservar la cavidad oral durante ventilaciones prolongadas.",
+    pista:"Recupera los siguientes parámetros del protocolo:\n\nα → Valor que mantiene aislada la vía aérea inferior.\n\nβ → Parámetro que determina cuándo un circuito deja de ser considerado seguro.\n\nγ → Concentración del agente utilizado para preservar la cavidad oral durante ventilaciones prolongadas.\n\n⚠ RESTRICCIÓN DEL SISTEMA\n\nEl motor de recuperación no reconoce el separador decimal utilizado habitualmente en los registros clínicos.\n\nPara validar el resultado, utiliza exclusivamente el punto (.) como separador decimal.\n\nLa coma (,) será considerada un carácter no válido.",
 
     formula:"VAP-SAFE = ( α + β ) × γ",
 
@@ -2590,7 +2590,7 @@ const pruebasMonitor = [
 
     mensaje:"Los módulos restaurados contienen la información necesaria para reconstruir el perfil clínico del paciente.\n\nACCESS.....ONLINE\nVAP........ONLINE\nPAIN.......ONLINE\nNEURO......ONLINE\nNUTRI......ONLINE\n\nTodos los algoritmos han sido restaurados.\nSin embargo, un parámetro esencial continúa sin poder validarse.",
 
-    pista:"Solo uno de los módulos recuperados clasifica la información en función de la edad del paciente.\n\nUtilízalo para determinar la variable AGE.\n\nUna vez obtenida, ejecuta el algoritmo habitual de selección del tubo endotraqueal pediátrico.\n\nRecuerda: el sistema únicamente acepta calibres comerciales estandarizados.",
+    pista:"Solo uno de los módulos recuperados clasifica la información en función de la edad del paciente.\n\nUtilízalo para determinar la variable AGE.\n\nUna vez obtenida, ejecuta el algoritmo habitual de selección del tubo endotraqueal pediátrico.\n\nRecuerda: el sistema únicamente acepta calibres comerciales estandarizados.\n\n⚠ RESTRICCIÓN DEL SISTEMA\n\nEl motor de recuperación utiliza el formato numérico internacional para los valores decimales.\n\nPara validar el calibre del tubo, utiliza exclusivamente el punto (.) como separador decimal.\n\nLa coma (,) será considerada un carácter no válido.",
 
     formula:"ØTET = ( AGE + 16 ) / 4",
 
@@ -2818,7 +2818,7 @@ const pruebasBombas = [
 
     mensaje:"El motor interno de cálculo ha dejado de responder.\n\nLa programación automática de la perfusión ha sido deshabilitada por seguridad.\n\nLa estación B. Braun exige una validación manual antes de restaurar el algoritmo de administración.",
 
-    pista:"━━━━━━━━━━━━━━━━━━━━\n\nPACIENTE DETECTADO\n\nPeso.............. 8,4 kg\nFármaco........... Labetalol\nPreparación....... Biblioteca UMIP Estándar\nDosis............. 1,6 mg/kg/h\n\n━━━━━━━━━━━━━━━━━━━━\n\nAccede a la tabla de administración segura de fármacos de las bombas.\n\nReconstruye la preparación estándar de Labetalol y calcula el flujo de infusión correspondiente.\n\nIntroduce únicamente el valor final en mL/h.",
+    pista:"━━━━━━━━━━━━━━━━━━━━\n\nPACIENTE DETECTADO\n\nPeso.............. 8,4 kg\nFármaco........... Labetalol\nPreparación....... Biblioteca UMIP Estándar\nDosis............. 1,6 mg/kg/h\n\n━━━━━━━━━━━━━━━━━━━━\n\nAccede a la tabla de administración segura de fármacos de las bombas.\n\nReconstruye la preparación estándar de Labetalol y calcula el flujo de infusión correspondiente.\n\nIntroduce únicamente el valor final en mL/h.\n\n⚠ RESTRICCIÓN DEL SISTEMA\n\nEl motor de recuperación utiliza el formato numérico internacional para los valores decimales.\n\nPara validar el flujo de infusión, utiliza exclusivamente el punto (.) como separador decimal.\n\nLa coma (,) será considerada un carácter no válido.",
 
     formula:"FLOW RATE = ? mL/h",
 
@@ -2840,7 +2840,7 @@ const pruebasBombas = [
 
     mensaje:"El motor de infusión ha conseguido restaurarse parcialmente.\n\nSin embargo, el algoritmo de dosificación continúa dañado.\n\nComo medida de seguridad, la estación B. Braun ha reducido automáticamente la perfusión al valor mínimo programable.\n\nLa administración permanecerá bloqueada hasta verificar que dicho límite es compatible con el perfil farmacológico.",
 
-    pista:"━━━━━━━━━━━━━━━━━━━━\n\nPERFIL DEL PACIENTE\n\nPeso.............. 2,1 kg\nFármaco........... Cisatracurio\nPerfil............ Biblioteca UMIP\nVelocidad......... Límite inferior permitido por el software\n\n━━━━━━━━━━━━━━━━━━━━\n\nAccede a la biblioteca farmacológica de las bombas.\n\nRecupera la preparación estándar de Cisatracurio.\n\nA continuación, determina qué dosis (mcg/kg/min) corresponde a la velocidad mínima aceptada por la bomba.\n\nIntroduce únicamente el valor numérico final para restaurar el algoritmo de dosificación.",
+    pista:"━━━━━━━━━━━━━━━━━━━━\n\nPERFIL DEL PACIENTE\n\nPeso.............. 2,1 kg\nFármaco........... Cisatracurio\nPerfil............ Biblioteca UMIP\nVelocidad......... Límite inferior permitido por el software\n\n━━━━━━━━━━━━━━━━━━━━\n\nAccede a la biblioteca farmacológica de las bombas.\n\nRecupera la preparación estándar de Cisatracurio.\n\nA continuación, determina qué dosis (mcg/kg/min) corresponde a la velocidad mínima aceptada por la bomba.\n\nIntroduce únicamente el valor numérico final para restaurar el algoritmo de dosificación.\n\n⚠ RESTRICCIÓN DEL SISTEMA\n\nEl motor de recuperación utiliza el formato numérico internacional para los valores decimales.\n\nPara validar la dosis, utiliza exclusivamente el punto (.) como separador decimal.\n\nLa coma (,) será considerada un carácter no válido.",
 
     formula:"MIN RATE = ? mcg/kg/min",
 
@@ -3028,15 +3028,21 @@ finalizarSimulacion();
 simulacion.tiempos.bombas =
     simulacion.tiempoEmpleado;
 
-            // Mejora del paciente
 mejorarPacienteBombas();
 
-// Marca el módulo como recuperado
 moduloRecuperado("bombas");
 
-// Muestra la secuencia final
-mostrarRestorationEngine();
-        }
+// La pantalla Recovery ya se ha actualizado.
+// Mantenerla visible 10 segundos antes
+// de iniciar Restoration Engine.
+
+setTimeout(()=>{
+
+    mostrarRestorationEngine();
+
+},10000);
+
+}
 
     });
 
@@ -3157,7 +3163,6 @@ Checking restored modules...
 /* ==========================================
    FINALIZAR RESTORATION
 ========================================== */
-
 function finalizarRestore(){
 
     restoreConsole.innerHTML += `
@@ -3182,16 +3187,13 @@ Mission report generated successfully.
         behavior: "smooth"
     });
 
-    setTimeout(()=>{
+    // Mostrar inmediatamente el botón del informe
+    restoreButtons.style.display = "block";
 
-        restoreButtons.style.display = "block";
-
-        restoreConsole.scrollTo({
-            top: restoreConsole.scrollHeight,
-            behavior: "smooth"
-        });
-
-    },10000);
+    restoreConsole.scrollTo({
+        top: restoreConsole.scrollHeight,
+        behavior: "smooth"
+    });
 
 }
 
