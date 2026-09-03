@@ -74,9 +74,9 @@ disconnectSound.volume = 0.45;
 
 const simulacion = {
 
-    tiempoRestante: 45 * 60,
+    tiempoRestante: 70 * 60,
 
-    tiempoAgotado: false, // 45 minutos
+    tiempoAgotado: false, // 70 minutos
 
     tiempoEmpleado: 0,
 
@@ -180,8 +180,8 @@ function iniciarTemporizador(){
 
     simulacion.tiempoRestante = 0;
 
-    // El tiempo máximo empleado son 45 minutos
-    simulacion.tiempoEmpleado = 45 * 60;
+    // El tiempo máximo empleado son 70 minutos
+    simulacion.tiempoEmpleado = 70 * 60;
 
     // Marcar que la misión terminó por tiempo
     simulacion.tiempoAgotado = true;
@@ -214,7 +214,7 @@ function actualizarTemporizador(){
 function mostrarFinTiempo(){
 
     // Registrar el tiempo máximo empleado
-    simulacion.tiempoEmpleado = 45 * 60;
+    simulacion.tiempoEmpleado = 70 * 60;
 
     // Detener cualquier sonido que pueda estar activo
     if(typeof alarmSound !== "undefined"){
@@ -275,7 +275,7 @@ function mostrarFinTiempo(){
 
                 <div>
                     <span>TIEMPO EMPLEADO</span>
-                    <strong>45:00</strong>
+                    <strong>70:00</strong>
                 </div>
 
                 <div>
@@ -339,7 +339,7 @@ function finalizarSimulacion(){
     intervaloTiempo = null;
 
     simulacion.tiempoEmpleado =
-        (45*60) - simulacion.tiempoRestante;
+        (70*60) - simulacion.tiempoRestante;
 
 }
 
@@ -1290,7 +1290,7 @@ function mostrarAvisoInicio(){
             </p>
 
             <p>
-                Dispone de <strong>45 minutos</strong> para restaurar
+                Dispone de <strong>70 minutos</strong> para restaurar
                 completamente la unidad antes del fallo total
                 del soporte vital.
             </p>
@@ -2255,7 +2255,7 @@ módulo BEDSIDE.
 Iniciando protocolo de recuperación...`);
 
 simulacion.tiempos.respirador =
-    (45*60) - simulacion.tiempoRestante;
+    (70*60) - simulacion.tiempoRestante;
 
             mejorarPacienteRespirador();
 
@@ -2306,7 +2306,7 @@ const pruebasBedside = [
 
     mensaje:"La unidad conserva una guía donde se recoge la información necesaria para mantener su funcionamiento coordinado.\n\nEl sistema ha localizado un nuevo bloque de gestión interna pendiente de recuperación.",
 
-    pista:"No busques un procedimiento clínico.\n\nBusca el documento que explica cómo funciona la propia unidad.\n\nUna vez localizado, utiliza la coordenada de recuperación:\n\n▣ 07\n━━━━ 01\n● 1\n\nExtrae el carácter correspondiente y continúa la restauración.",
+    pista:"No busques un procedimiento clínico.\n\nBusca el documento que explica cómo funciona la propia unidad.\n\nUna vez localizado, utiliza la coordenada de recuperación:\n\n▣ 07\n━━━━ 01\n● 7\n\nExtrae el carácter correspondiente y continúa la restauración.",
 
     respuesta:"O"
 },
@@ -2511,7 +2511,7 @@ módulo MONITOR.
 Iniciando protocolo de recuperación...`);
 
 simulacion.tiempos.bedside =
-    (45*60) - simulacion.tiempoRestante;
+    (70*60) - simulacion.tiempoRestante;
 
             mejorarPacienteBedside();
 
@@ -2780,7 +2780,7 @@ módulo BOMBAS DE INFUSIÓN.
 Iniciando protocolo de recuperación...`);
 
 simulacion.tiempos.monitor =
-    (45*60) - simulacion.tiempoRestante;
+    (70*60) - simulacion.tiempoRestante;
 
         // Mejora del paciente
         mejorarPacienteMonitor();
@@ -3962,7 +3962,7 @@ function resetDebug(){
     intervaloTiempo = null;
 
     // Reiniciar tiempo
-    simulacion.tiempoRestante = 45*60;
+    simulacion.tiempoRestante = 70*60;
 
     // Reiniciar sistemas
     simulacion.sistemas.respirador.estado = "RECUPERABLE";
@@ -3997,7 +3997,7 @@ function debugRespirador(){
 
     resetDebug();
 
-    simulacion.tiempoRestante = 45*60;
+    simulacion.tiempoRestante = 70*60;
 
     mostrarCentroRecuperacion();
 
@@ -4094,7 +4094,7 @@ function debugBombas(){
 }
 function debugRecovery(){
 
-    simulacion.tiempoRestante = 45*60;
+    simulacion.tiempoRestante = 70*60;
 
     simulacion.sistemas.respirador.estado = "DISPONIBLE";
     simulacion.sistemas.respirador.recuperado = false;

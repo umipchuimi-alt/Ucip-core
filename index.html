@@ -653,40 +653,62 @@ Estado:
 Los documentos físicos utilizan un sistema
 de indexación jerárquica.
 
-Cada referencia está formada por tres índices.
+Cada coordenada está formada por
+TRES NIVELES de navegación.
 
-Los índices deben utilizarse en el orden
-correcto.
+Los niveles deben consultarse siempre
+DE ARRIBA HACIA ABAJO.
 
-Nunca es posible acceder al índice inferior
-sin haber localizado previamente el superior.
+----------------------------------------
 
-Jerarquía de navegación
+             NIVEL 1
+                □
+                │
+                ▼
+             NIVEL 2
+                ─
+                │
+                ▼
+             NIVEL 3
+                ●
 
-"□"
+----------------------------------------
+
+CÓMO INTERPRETAR LA COORDENADA
+----------------------------------------
+
+□  →  Selecciona una SECCIÓN
+      dentro del documento.
+
+─  →  Selecciona una POSICIÓN
+      dentro de esa sección.
+
+●  →  Selecciona un ELEMENTO
+      dentro de esa posición.
+
+La combinación de los tres niveles
+permite localizar un único carácter.
+
+----------------------------------------
+
+REGLA DE NAVEGACIÓN
+----------------------------------------
+
+□  →  ─  →  ●
+
+Nunca es posible utilizar un nivel
+sin haber localizado previamente
+el nivel superior.
+
+Ejemplo de estructura:
+
+□ 03
 │
-▼
-"─"
-│
-▼
-"●"
+└── ─ 11
+     │
+     └── ● 10
 
-Descripción del sistema:
 
-□  Contiene varias ─
-
-─  Contiene varios ●
-
-●  Representa una única posición dentro de ─
-
-La última posición identifica un único
-carácter dentro del documento.
-
-NOTA:
-La interpretación exacta de cada nivel fue
-eliminada durante el incidente.
-
-Fin del archivo.
 
         </pre>
 
